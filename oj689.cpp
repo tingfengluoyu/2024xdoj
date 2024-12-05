@@ -5,21 +5,36 @@
 
 int main()
 {
+	char arr[4];
+	char array[51];
 	int count = 0;
-	char arr1[4];
-	char arr2[51];
-	scanf("%3s", arr1);
-	scanf("%50s", arr2);
+	scanf("%s", arr);
+	scanf("%s", array);
 
-	int len1 = strlen(arr1);
-	int len2 = strlen(arr2);
+	int len = strlen(arr);
 
-	for (int i = 0; i <= len2 - len1; i++) {
-		if (strncmp(arr2 + i, arr1, len1) == 0) {
-			count++;
+	if (len == 1) {
+		for (int i = 0; i < strlen(array); i++) {
+			if (arr[0] == array[i]) {
+				count++;
+			}
 		}
 	}
-	
+	else if (len == 2) {
+		for (int i = 0; i < strlen(array) - 1; i++) {
+			if (arr[0] == array[i] && arr[1] == array[i + 1]) {
+				count++;
+			}
+		}
+	}
+	else if (len == 3) {
+		for (int i = 0; i < strlen(array) - 2; i++) {
+			if (arr[0] == array[i] && arr[1] == array[i + 1] && arr[2] == array[i + 2]){
+				count++;
+		    }
+		}
+	}
+
 	printf("%d\n", count);
 
 	return 0;
