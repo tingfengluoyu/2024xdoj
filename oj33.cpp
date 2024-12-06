@@ -14,7 +14,7 @@ int main()
 
 double function(int n) {
 	if (n == 1) {
-		 return 1.0;
+		return 1.0;
 	}
 	else {
 		return 1.0 / (1.0 + function(n - 1));
