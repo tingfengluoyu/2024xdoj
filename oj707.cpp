@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 
+//没用上的
 bool isSubstring(const char* mainStr, const char* subStr, int mainLen, int subLen) {
     int i, j;
     for (i = 0; i <= mainLen - subLen; i++) {
