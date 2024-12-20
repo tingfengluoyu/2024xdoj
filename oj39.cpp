@@ -21,7 +21,7 @@ int main()
     for (int i = 0; i < m && !found; i++) {
         int min = arr[i][0];
         int x = 0;
-        for (int j = 1; j < n; j++) {
+        for (int j = 0; j < n; j++) {
             if (min > arr[i][j]) {
                 min = arr[i][j];
                 x = j;
@@ -30,10 +30,10 @@ int main()
 
         int max = arr[0][x];
         int y = x;
-        for (int t = 1; t < m; t++) {
+        for (int t = 0; t < m; t++) {
             if (max < arr[t][x]) {
                 max = arr[t][x];
-                y = x;
+                y = t;
             }
         }
 
