@@ -2,60 +2,44 @@
 
 #include<stdio.h>
 
-int power(int x);
-
 int main()
 {
-    int n = 0;
-    scanf("%d", &n);
-    int b = n;
-    int count = 0;
-    while (b > 0) {
-        count++;
-        b /= 10;
-    }
+	int n = 0;
+	scanf("%d", &n);
+	int arr[7] = { 0 };
 
-    int arr[7];
-    b = n;
-    for (int i = 0; i < count; i++) {
-        arr[i] = b % 10;
-        b /= 10;
-    }
+	int i = 0;
+	int count = 0;
 
-    int sum = 0;
-    int a = 0;
-    int c = count - 1;
+	while (n > 0) {
+		arr[i++] = n % 10;
+		n /= 10;
+		count++;
+	}
 
-    // ÄæĞòÊı
-    for (int j = count - 1; j >= 0; j--) {
-        sum += arr[j] * power(a++);
-    }
+	int back = 0;//ÄæĞòÊı
 
-    // ½µĞòÅÅĞò
-    for (int i = 0; i < count - 1; i++) {
-        for (int j = 0; j < count - i - 1; j++) {
-            if (arr[j] < arr[j + 1]) {
-                int t = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = t;
-            }
-        }
-    }
+	for (int i = 0; i < count; i++) {
+		back = back * 10 + arr[i];
+	}
 
-    // ¼ÆËã½µĞòÊı
-    for (int i = 0; i < count; i++) {
-        sum += arr[i] * power(c--);
-    }
+	for (int i = 0; i < count; i++) {
+		for (int j = i + 1; j < count; j++) {
+			if (arr[i] < arr[j]) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+		}
+	}
 
-    printf("%d\n", sum);
+	int low = 0;//½µĞòÊı
 
-    return 0;
-}
+	for (int i = 0; i < count; i++) {
+		low = low * 10 + arr[i];
+	}
 
-int power(int x) {
-    int result = 1;
-    for (int i = 0; i < x; i++) {
-        result *= 10;
-    }
-    return result;
+	printf("%d\n", back + low);
+
+	return 0;
 }
