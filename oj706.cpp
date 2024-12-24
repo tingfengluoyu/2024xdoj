@@ -5,27 +5,26 @@
 
 int main()
 {
-	char mainstr[41];
-	char substr[21];
+	char dad[100];
+	char son[100];
 	int n = 0;
-	scanf("%20s", mainstr);
-	scanf("%20s", substr);
+	scanf("%20s", dad);
+	scanf("%20s", son);
 	scanf("%d", &n);
 
-	char* p = &mainstr[n];
-	char arr[21];
-	int i = 0;
-	while (*p) {
-		arr[i++] = *p;
-		*p = 0;
-		p++;
+	int len1 = strlen(dad);
+	int len2 = strlen(son);
+
+	for (int i = len1; i >= n; i--) {
+		dad[i + len2] = dad[i];
 	}
-	arr[i] = '\0';
 
-	strcat(mainstr, substr);
-	strcat(mainstr, arr);
+	int j = 0;
+	for (int i = n; i < n + len2; i++) {
+		dad[i] = son[j++];
+	}
 
-	printf("%s", mainstr);
+	printf("%s", dad);
 
 	return 0;
 }
